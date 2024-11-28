@@ -1,3 +1,4 @@
+import Image from "next/image"
 import Link from "next/link"
 import { Calendar } from 'lucide-react'
 
@@ -7,9 +8,11 @@ import {
   Card,
   CardContent,
   CardDescription,
+  CardFooter,
   CardHeader,
   CardTitle,
 } from "@/components/ui/card"
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
 
 interface PostCardProps {
   title: string
@@ -17,6 +20,11 @@ interface PostCardProps {
   category: string
   date: string
   slug: string
+  image: string
+  author: {
+    name: string
+    avatar: string
+  }
   className?: string
 }
 
@@ -26,10 +34,21 @@ export function PostCard({
   category,
   date,
   slug,
+  image,
+  author,
   className,
 }: PostCardProps) {
   return (
-    <Card className={cn("overflow-hidden", className)}>
+    <Card className={cn("overflow-hidden transition-colors hover:bg-muted/50", className)}>
+      <div className="aspect-video relative">
+        <Image
+          src={image}
+          alt={title}
+          fill
+          className="object-cover"
+          priority
+        />
+      </div>
       <CardHeader>
         <div className="flex items-center justify-between">
           <div className="text-sm text-muted-foreground">
@@ -40,14 +59,26 @@ export function PostCard({
             {date}
           </div>
         </div>
-        <CardTitle>{title}</CardTitle>
-        <CardDescription>{description}</CardDescription>
+        <CardTitle className="line-clamp-2">{title}</CardTitle>
+        <CardDescription className="line-clamp-3">{description}</CardDescription>
       </CardHeader>
       <CardContent>
-        <Link href={`/posts/${slug}`}>
-          <Button>Read more</Button>
-        </Link>
+        <div className="flex items-center gap-4">
+          <Avatar>
+            <AvatarImage src={author.avatar} alt={author.name} />
+            <AvatarFallback>{author.name[0]}</AvatarFallback>
+          </Avatar>
+          <div className="flex flex-col">
+            <span className="text-sm font-medium">{author.name}</span>
+            <span className="text-xs text-muted-foreground">Author</span>
+          </div>
+        </div>
       </CardContent>
+      <CardFooter>
+        <Link href={`/posts/${slug}`} className="w-full">
+          <Button className="w-full">Read more</Button>
+        </Link>
+      </CardFooter>
     </Card>
   )
 }
