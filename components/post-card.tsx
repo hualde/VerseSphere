@@ -12,7 +12,6 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card"
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
 
 interface PostCardProps {
   title: string
@@ -20,11 +19,6 @@ interface PostCardProps {
   category: string
   date: string
   slug: string
-  image: string
-  author: {
-    name: string
-    avatar: string
-  }
   className?: string
 }
 
@@ -34,20 +28,14 @@ export function PostCard({
   category,
   date,
   slug,
-  image,
-  author,
   className,
 }: PostCardProps) {
   return (
     <Card className={cn("overflow-hidden transition-colors hover:bg-muted/50", className)}>
-      <div className="aspect-video relative">
-        <Image
-          src={image}
-          alt={title}
-          fill
-          className="object-cover"
-          priority
-        />
+      <div className="aspect-video relative bg-muted">
+        <div className="flex h-full items-center justify-center text-muted-foreground">
+          Featured Image
+        </div>
       </div>
       <CardHeader>
         <div className="flex items-center justify-between">
@@ -64,13 +52,10 @@ export function PostCard({
       </CardHeader>
       <CardContent>
         <div className="flex items-center gap-4">
-          <Avatar>
-            <AvatarImage src={author.avatar} alt={author.name} />
-            <AvatarFallback>{author.name[0]}</AvatarFallback>
-          </Avatar>
+          <div className="h-10 w-10 rounded-full bg-muted" />
           <div className="flex flex-col">
-            <span className="text-sm font-medium">{author.name}</span>
-            <span className="text-xs text-muted-foreground">Author</span>
+            <span className="text-sm font-medium">Author</span>
+            <span className="text-xs text-muted-foreground">Contributor</span>
           </div>
         </div>
       </CardContent>

@@ -8,36 +8,21 @@ const POSTS = [
     description: "A comprehensive guide on how to capture perfect moments in the digital age. Learn about composition, lighting, and post-processing techniques.",
     category: "Photography",
     date: "2024-01-15",
-    slug: "art-digital-photography",
-    image: "/placeholder.svg?height=400&width=600",
-    author: {
-      name: "Emma Wilson",
-      avatar: "/placeholder.svg?height=40&width=40"
-    }
+    slug: "art-digital-photography"
   },
   {
     title: "Vegetarian Recipes for Beginners",
     description: "Discover delicious and easy-to-make vegetarian recipes that will transform your cooking. From quick lunches to elaborate dinners.",
     category: "Cooking",
     date: "2024-01-14",
-    slug: "vegetarian-recipes-beginners",
-    image: "/placeholder.svg?height=400&width=600",
-    author: {
-      name: "Marcus Chen",
-      avatar: "/placeholder.svg?height=40&width=40"
-    }
+    slug: "vegetarian-recipes-beginners"
   },
   {
     title: "Travel Guide: Barcelona",
     description: "Everything you need to know for your next visit to the Catalan capital. Explore hidden gems, local cuisine, and cultural highlights.",
     category: "Travel",
     date: "2024-01-13",
-    slug: "travel-guide-barcelona",
-    image: "/placeholder.svg?height=400&width=600",
-    author: {
-      name: "Sofia Garcia",
-      avatar: "/placeholder.svg?height=40&width=40"
-    }
+    slug: "travel-guide-barcelona"
   }
 ]
 
@@ -109,3 +94,4 @@ export default function Home() {
     </div>
   )
 }
+
