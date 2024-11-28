@@ -1,51 +1,40 @@
-import { SiteHeader } from "@/components/site-header"
-import { PostCard } from "@/components/post-card"
+"use client"
 
-// Example posts - in a real implementation these would come from a database or CMS
-const POSTS = [
-  {
-    title: "The Art of Digital Photography",
-    description: "A comprehensive guide on how to capture perfect moments in the digital age",
-    category: "Photography",
-    date: "2024-01-15",
-    slug: "art-digital-photography"
-  },
-  {
-    title: "Vegetarian Recipes for Beginners",
-    description: "Discover delicious and easy-to-make vegetarian recipes",
-    category: "Cooking",
-    date: "2024-01-14",
-    slug: "vegetarian-recipes-beginners"
-  },
-  {
-    title: "Travel Guide: Barcelona",
-    description: "Everything you need to know for your next visit to the Catalan capital",
-    category: "Travel",
-    date: "2024-01-13",
-    slug: "travel-guide-barcelona"
-  }
-]
+import * as React from "react"
+import { Moon, Sun } from 'lucide-react'
+import { useTheme } from "next-themes"
 
-export default function Home() {
+import { Button } from "@/components/ui/button"
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu"
+
+export default function ModeToggle() {
+  const { setTheme } = useTheme()
+
   return (
-    <div className="min-h-screen bg-background">
-      <SiteHeader />
-      <main className="container py-6 md:py-12">
-        <div className="flex flex-col items-center justify-center space-y-4 text-center">
-          <h1 className="text-4xl font-bold tracking-tighter sm:text-5xl md:text-6xl lg:text-7xl">
-            VerseSphere
-          </h1>
-          <p className="max-w-[700px] text-lg text-muted-foreground sm:text-xl">
-            Your space to explore a diversity of fascinating topics
-          </p>
-        </div>
-        <div className="mt-12 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-          {POSTS.map((post) => (
-            <PostCard key={post.slug} {...post} />
-          ))}
-        </div>
-      </main>
-    </div>
+    <DropdownMenu>
+      <DropdownMenuTrigger asChild>
+        <Button variant="ghost" size="icon">
+          <Sun className="h-[1.2rem] w-[1.2rem] rotate-0 scale-100 transition-all dark:-rotate-90 dark:scale-0" />
+          <Moon className="absolute h-[1.2rem] w-[1.2rem] rotate-90 scale-0 transition-all dark:rotate-0 dark:scale-100" />
+          <span className="sr-only">Toggle theme</span>
+        </Button>
+      </DropdownMenuTrigger>
+      <DropdownMenuContent align="end">
+        <DropdownMenuItem onClick={() => setTheme("light")}>
+          Light
+        </DropdownMenuItem>
+        <DropdownMenuItem onClick={() => setTheme("dark")}>
+          Dark
+        </DropdownMenuItem>
+        <DropdownMenuItem onClick={() => setTheme("system")}>
+          System
+        </DropdownMenuItem>
+      </DropdownMenuContent>
+    </DropdownMenu>
   )
 }
-

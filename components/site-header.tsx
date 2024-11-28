@@ -2,7 +2,7 @@ import Link from "next/link"
 import { Newspaper } from 'lucide-react'
 
 import { Button } from "@/components/ui/button"
-import { ModeToggle } from "@/components/mode-toggle"
+import ModeToggle from "@/components/mode-toggle"
 
 export function SiteHeader() {
   return (
@@ -32,4 +32,3 @@ export function SiteHeader() {
     </header>
   )
 }
-
