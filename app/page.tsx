@@ -32,21 +32,20 @@ export default function Home() {
       <SiteHeader />
       <main>
         {/* Hero Section */}
-        <section className="relative">
-          <div className="absolute inset-0 bg-gradient-to-r from-primary to-primary/50 mix-blend-multiply" />
-          <div className="container relative py-24 md:py-32 lg:py-40">
-            <div className="flex flex-col items-center gap-8 text-center text-white">
+        <section className="bg-slate-950 text-white">
+          <div className="container py-24 md:py-32 lg:py-40">
+            <div className="flex flex-col items-center gap-8 text-center">
               <h1 className="text-4xl font-bold tracking-tighter sm:text-5xl md:text-6xl lg:text-7xl">
                 Welcome to VerseSphere
               </h1>
-              <p className="max-w-[700px] text-lg text-white/90 sm:text-xl md:text-2xl">
+              <p className="max-w-[700px] text-lg text-slate-400 sm:text-xl md:text-2xl">
                 Your space to explore a diversity of fascinating topics, from photography to travel, and everything in between.
               </p>
               <div className="flex gap-4">
                 <Button size="lg" variant="secondary">
                   Start Reading
                 </Button>
-                <Button size="lg" variant="outline" className="bg-transparent text-white hover:bg-white hover:text-primary">
+                <Button size="lg" variant="outline" className="border-white text-white hover:bg-white hover:text-slate-950">
                   Learn More
                 </Button>
               </div>
@@ -70,7 +69,7 @@ export default function Home() {
         </section>
 
         {/* Newsletter Section */}
-        <section className="border-t bg-muted/50">
+        <section className="border-t bg-slate-50 dark:bg-slate-950">
           <div className="container py-12 md:py-16 lg:py-20">
             <div className="flex flex-col items-center gap-4 text-center">
               <h2 className="text-3xl font-bold tracking-tighter md:text-4xl">
